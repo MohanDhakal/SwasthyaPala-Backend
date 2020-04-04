@@ -8,7 +8,7 @@ APIs for the Swasthyapala-personal project.
   ### PHASE I: User Detail
   
    This is the first phase of Iteration 1 where i have developed apis for storing and retrieving user information.
-   The site is currently hosted at [localhost](https://swasthyapala.com).
+   The site is currently hosted at [swasthyapala](https://swasthyapala.com).
    
    **Some Basics API calls are mentioned below:**
    
@@ -22,7 +22,8 @@ APIs for the Swasthyapala-personal project.
    - Example : if you want to retreive email of all the users:
       set user_filer to "email"
       
-   __Only email and name are the available keyword for now__ 
+   __Only email and name are the available filter for now and
+     there's no server side validation for any feild__ 
       
       sample request: http://127.0.0.1/apis/swasthyapala/get_users.php?user_filter=email
   ----------------------------------------------------------------------------------------------
@@ -39,4 +40,4 @@ APIs for the Swasthyapala-personal project.
       
        sample request: http://127.0.0.1/apis/swasthyapala/get_address_of_a_user.php?uid=2
      
-   
+   __Note: All the values on the database are dummy for the testing purpose__
