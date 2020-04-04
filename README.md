@@ -25,7 +25,7 @@ APIs for the Swasthyapala-personal project.
    __Only email and name are the available filter for now and
      there's no server side validation for any feild__ 
       
-      sample request: http://127.0.0.1/apis/swasthyapala/get_users.php?user_filter=email
+      sample request: http://swasthyapala.com/get_users.php?user_filter=email
   ----------------------------------------------------------------------------------------------
  
    ***Get lattitude and longitude of the user:***
@@ -38,6 +38,6 @@ APIs for the Swasthyapala-personal project.
     
    __Only integers are available as uid no other datatype will work here__
       
-       sample request: http://127.0.0.1/apis/swasthyapala/get_address_of_a_user.php?uid=2
+       sample request: http://swasthyapala.com/get_address_of_a_user.php?uid=2
      
    __Note: All the values on the database are dummy for the testing purpose__
