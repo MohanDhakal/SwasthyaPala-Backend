@@ -1,5 +1,14 @@
 <?php
-include('db_connect.php');
+
+//allows access from all origin such as localhost,any domain or subdomain
+header("Access-Control-Allow-Origin: *");
+
+
+//what kind of methode we are accepting
+header("Access-Control-Allow_Methods:GET");
+
+
+include('../db_connect.php');
 
 //provide options for which to select 
 //1. Email Only(email)
@@ -42,9 +51,29 @@ switch($option){
 
 
 function publishResults($result){
+    include('../db_connect.php');
+
+    $user_list=array();
+
     while($row = $result->fetch_assoc()) {
-        echo (json_encode($row));
+
+        array_push(
+            $user_list,array(
+                "userId"=>$row["uid"],
+                "userName"=>$row["userName"],
+                "email"=>$row["email"],
+                "phone"=>$row["phone"]
+            ));
     }
+
+        $conn->close();    
+    
+        http_response_code(200);
+
+        echo json_encode(array(
+            "status"=>1,
+            "users"=>$user_list
+        ));
       
 }
 

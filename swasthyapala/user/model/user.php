@@ -1,6 +1,7 @@
 <?php
 include('address.php');
 
+
 class User{
 
   //properties
@@ -8,7 +9,7 @@ class User{
   private $addressId;
 
   function __construct(){
-
+ 
   }
 
   static function createNewUser($name,$pass,$phone,$email){
@@ -23,10 +24,14 @@ class User{
   static function updateExistingUserWithAddressId(){
     $updatedUser=new User();
     return $updatedUser;
+
+
   }
   static function updateExistingUser(){
     $updatedUser=new User();
     return $updatedUser;
+ 
+ 
   }
 
   function set_name($userName){
@@ -66,6 +71,62 @@ class User{
   
   function get_email(){
     return $this->email;
+  }
+
+  function insertUser($user){
+
+    include('../db_connect.php');
+
+    $insert_query= 
+    "INSERT INTO user (userName, password,email,phone)
+    VALUES ('$user->userName', '$user->password',
+    '$user->email','$user->phone')";
+    
+    if ($conn->query($insert_query) === TRUE) {
+    
+      $conn->close();
+      return true;
+
+    } else {
+    
+      $conn->close();
+      return false;
+    }
+  }
+
+
+ function updateUser($userId){
+  include('../db_connect.php');
+
+  $addrSql="SELECT addressId FROM `address` WHERE uid=$userId";
+  $result = $conn->query($addrSql);
+  
+  
+
+  $addressIdofGivenUser;
+  
+  if ($result->num_rows > 0) {
+   $addressIdofGivenUser= ($result->fetch_assoc())["addressId"];
+  
+  }
+
+  $updateQuery= "UPDATE user  
+    SET addressId = $addressIdofGivenUser
+    WHERE uid = $userId";
+
+
+  if ($conn->query($updateQuery) === TRUE) {
+      $conn->close();   
+      return true;
+  } else {
+      $conn->close();
+      echo "Error: " . $updateQuery . "<br>" . $conn->error;
+      return false;
+  }
+
+
+
+
   }
 
 }

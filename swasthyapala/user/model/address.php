@@ -28,6 +28,24 @@ class UserAddress{
   }
   
 
+  function insertUserAddress($address,$uid){
+    include('../db_connect.php');
+    
+    $sql="INSERT INTO address (longitude,lattitude,uid)
+          VALUES ($address->lat, $address->long,$uid)";
+
+    if ($conn->query($sql) === TRUE) {
+          $conn->close();
+          return true;
+
+      }else {
+
+              $conn->close();
+              return false;
+      }
+ 
+  }
+
 }
 
 

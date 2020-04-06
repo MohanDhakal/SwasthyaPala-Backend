@@ -1,7 +1,7 @@
 <?php
-
-include('db_connect.php');
-include('user.php');
+//needs to be modified according to requirement
+include('../db_connect.php');
+include('../user/modeluser.php');
 
 $updatedUser=User::updateExistingUser();
 
@@ -72,6 +72,7 @@ if(!empty($name)&&!empty($password)){
     "UPDATE user
     SET userName = '$name'
     WHERE uid =$idToUpdate";
+
     showUpdateStatus($updateQuery,$conn);
 
 }
